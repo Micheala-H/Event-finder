@@ -13,3 +13,17 @@ function getApi() {
 }
 
 getApi()
+
+function getMmoApi() {
+    let requestMmoUrl = 'https://cors-anywhere.herokuapp.com/https://www.mmobomb.com/api1/games'
+
+    fetch(requestMmoUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (Data) {
+            console.log(Data)
+        })
+}
+
+getMmoApi()
