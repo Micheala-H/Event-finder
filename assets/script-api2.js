@@ -57,3 +57,14 @@ function getAdvice() {
             source: availableCities
         })
     })
+
+$(document).ready(function () {
+    $('#searchBtn').click( function(){
+        let text = $(this).siblings('#cities').val();
+        let city = $(this).parent().attr('id');
+
+        console.log(city)
+
+        localStorage.setItem(city, text)
+    })
+})
