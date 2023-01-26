@@ -63,6 +63,7 @@ $(document).ready(function () {
         let text = $(this).siblings('#cities').val();
         let city = $(this).parent().attr('id');
 
+        
         console.log(city)
 
         localStorage.setItem(city, text)
