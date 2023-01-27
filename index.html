@@ -14,34 +14,36 @@
 <body>
 
     <header>
-        <h1 class="title has-text-info-dark" >MMO Finder</h1>
-        <div id="advice" >
-            
-        </div>
+        <h1 class="title is-size-1 has-text-info-dark has-text-centered is-family-sans-serif " >Event Finder</h1>
     </header>
-    <h2>Find your games by genre here</h2>
-    <div id="searchCity">
-        <label for="cities">City:</label>
-        <input type="text" id="cities">
-        <button id="searchBtn">Search</button>
-    </div>
-    <div>list of games
-        <ul></ul>
+    <div class="column has-text-centered">
+        <h3>Search your city here</h3>
+        <div id="searchCity">
+            <label for="cities">City:</label>
+            <input type="text" id="cities">
+            <button id="searchBtn">Search</button>
+            <p>Saved cities</p>
+            <div class="is-flex is-justify-content-space-around">
+                <ul class="list-items">
+                
+                </ul>
+            </div>
+        </div>
     </div>
     <div class="columns">
-        <div class="column card m-1 mt-3 has-text-white has-background-grey" id="attraction-0"></div>
-        <div class="column m-1 card mt-3 has-text-white has-background-grey" id="attraction-1"></div>
-        <div class="column m-1 card mt-3 has-text-white has-background-grey" id="attraction-2"></div>
-        <div class="column m-1 card mt-3 has-text-white has-background-grey" id="attraction-3"></div>
+        <div class="column card m-1 mt-3 has-text-white has-background-grey-darker ml-4" id="attraction-0"></div>
+        <div class="column m-1 card mt-3 has-text-white has-background-grey-darker" id="attraction-1"></div>
+        <div class="column m-1 card mt-3 has-text-white has-background-grey-darker" id="attraction-2"></div>
+        <div class="column m-1 card mt-3 has-text-white has-background-grey-darker mr-4" id="attraction-3"></div>
         
     </div>
     
-    
+    <div id="advice" class="has-text-centered title is-size-5"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- <script src="./assets/script.js"></script> -->
-<script src="./assets/script-api2.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- <script src="./assets/script.js"></script> -->
+    <script src="./assets/script-api2.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </body>
 </html>
