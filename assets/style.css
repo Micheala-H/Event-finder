@@ -10,3 +10,13 @@
     border-style: solid;
     width: 150px;
 }
+
+.list-items {
+    display: inline-flex;
+    justify-content: space-between;
+    
+}
+
+li + li {
+    margin-left: 10px;
+}
