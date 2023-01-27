@@ -93,7 +93,7 @@ function deleteAppends() {
     if (cities.length >= 5) {
         cities.pop()
     }
-    if (!cities.includes($('#cities').val())) {
+    if (!cities.includes($('#cities').val()) && ($('#cities').val() !== "") ) {
         cities.unshift($('#cities').val())
     }
     
