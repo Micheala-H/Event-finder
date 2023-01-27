@@ -69,12 +69,13 @@ $(document).ready(function () {
         getEventByCity(city)
         
         console.log(city)
-
-        localStorage.setItem('searchedCities', city)
+        getSearchedCities()
+        
     })
 
     autoCities();
-    getAdvice()
+    getAdvice();
+   
 })
 
 function deleteAppends() {
@@ -83,3 +84,11 @@ function deleteAppends() {
     }
    
   }
+
+  function getSearchedCities() {
+    const cities = JSON.parse(localStorage.getItem('cities')) || [];
+    if (!cities.includes($('#cities').val())) {
+        cities.push($('#cities').val())
+    }
+    localStorage.setItem('cities', JSON.stringify(cities))
+    }
