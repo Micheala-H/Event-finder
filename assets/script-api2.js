@@ -62,6 +62,7 @@ function getAdvice() {
 $(document).ready(function () {
     $('#searchBtn').click( function(e){
         e.preventDefault();
+        deleteAppends()
         const city = $('#cities').val()
         // let text = $(this).siblings('#cities').val();
         // let city = $(this).parent().attr('id');
@@ -76,3 +77,9 @@ $(document).ready(function () {
     getAdvice()
 })
 
+function deleteAppends() {
+    for (let num = 0; num < 4; num++) {
+        $('#attraction-' + num).empty()
+    }
+   
+  }
