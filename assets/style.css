@@ -1,6 +1,6 @@
-#cat-gif {
-    height: 150px;
-    width: 150px
+img {
+    height: 300px;
+    width: 300px
 }
 
 .ui-autocomplete {
