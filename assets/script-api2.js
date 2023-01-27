@@ -87,9 +87,14 @@ function deleteAppends() {
 
   function saveSearchedCities() {
     const cities = JSON.parse(localStorage.getItem('cities')) || [];
+    console.log(cities.length);
+    if (cities.length >= 5) {
+        cities.pop()
+    }
     if (!cities.includes($('#cities').val())) {
         cities.unshift($('#cities').val())
     }
+    
     localStorage.setItem('cities', JSON.stringify(cities))
     }
 
