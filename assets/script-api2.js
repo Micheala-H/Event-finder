@@ -62,12 +62,13 @@ function getAdvice() {
 $(document).ready(function () {
     $('#searchBtn').click( function(e){
         e.preventDefault();
-        deleteAppends()
-        const city = $('#cities').val()
+        deleteAppends();
+        const city = $('#cities').val();
         // let text = $(this).siblings('#cities').val();
         // let city = $(this).parent().attr('id');
         saveSearchedCities();
-        getEventByCity(city)
+        getEventByCity(city);
+        getSearchedCities()
         
     })
 
@@ -81,8 +82,9 @@ $(document).ready(function () {
 function deleteAppends() {
     for (let num = 0; num < 4; num++) {
         $('#attraction-' + num).empty()
-    }
-   
+    };
+    
+    $('#searchedCities').empty()
   }
 
   function saveSearchedCities() {
@@ -100,12 +102,8 @@ function deleteAppends() {
 
     function getSearchedCities() {
         const cities = JSON.parse(localStorage.getItem('cities')) || [];
-        console.log(cities);
 
         for (let i = 0; i < cities.length; i++) {
             $('#searchedCities').append('<li>' + cities[i] + '</li>') 
-        }
-
-    
-        
+        }    
     }
