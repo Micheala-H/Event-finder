@@ -106,18 +106,6 @@ function deleteAppends() {
             $('#searchedCities').append('<li>' + cities[i] + '</li>') 
         }
 
-    //     let length = cities.length
-    //     if (length < 4){
-    //        for (let i = 0; i < length; i++) {
-    //         $('#searchedCities').append('<li>' + cities[i] + '</li>')
-    //     } 
-    // }
-        
-    //     else {
-    //         for (let i = 0; i < 4; i++) {
-    //         $('#searchedCities').append('<li>' + cities[i] + '</li>')
-
-    //     } 
-    //     }
+    
         
     }
