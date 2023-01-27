@@ -10,12 +10,14 @@ function getEventByCity(city) {
         })
         .then(function (data) {
             console.log(data);
-
-            for (let i = 0; i < 4; i++) {
-                
-                appendEvents(i, i)
-                
+            if (data.page.totalElements != '0' && ($('#cities').val() !== "")) {
+                for (let i = 0; i < 4; i++) {
+                    appendEvents(i, i);
+                    localStorage.setItem('CityCorrectName', JSON.stringify(data._embedded.events[0]._embedded.venues[0].city.name));
+                    saveSearchedCities()
+                }
             }
+            
 
             function appendEvents(num, index) {
                 $('#attraction-' + num).append('<h2 class= "has-text-centered has-text-warning has-text-weight-bold" >' + data._embedded.events[index].name + '</h2>');
@@ -62,24 +64,57 @@ function getAdvice() {
 $(document).ready(function () {
     $('#searchBtn').click( function(e){
         e.preventDefault();
-        deleteAppends()
-        const city = $('#cities').val()
+        deleteAppends();
+        const city = $('#cities').val();
         // let text = $(this).siblings('#cities').val();
         // let city = $(this).parent().attr('id');
-        getEventByCity(city)
         
-        console.log(city)
-
-        localStorage.setItem('searchedCities', city)
+        getEventByCity(city);
+        getSearchedCities()
+        
     })
 
     autoCities();
-    getAdvice()
+    getAdvice();
+    getSearchedCities()
+    
+   
 })
 
 function deleteAppends() {
     for (let num = 0; num < 4; num++) {
         $('#attraction-' + num).empty()
-    }
-   
+    };
+    
+    $('#searchedCities').empty()
   }
+
+  function saveSearchedCities() {
+    const CityCorrectName = JSON.parse(localStorage.getItem('CityCorrectName'))
+    if (CityCorrectName && ($('#cities').val() !== "")) {
+        const cities = JSON.parse(localStorage.getItem('cities')) || [];
+        console.log(cities.length);
+        if (cities.length >= 5) {
+            cities.pop()
+        }
+        if (!cities.includes(CityCorrectName)) {
+            cities.unshift(CityCorrectName)
+        }
+        
+        localStorage.setItem('cities', JSON.stringify(cities))
+
+        
+    }
+    
+    }
+
+
+
+
+    function getSearchedCities() {
+        const cities = JSON.parse(localStorage.getItem('cities')) || [];
+
+        for (let i = 0; i < cities.length; i++) {
+            $('#searchedCities').append('<li>' + cities[i] + '</li>') 
+        }    
+    }
