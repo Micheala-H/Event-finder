@@ -66,15 +66,15 @@ $(document).ready(function () {
         const city = $('#cities').val()
         // let text = $(this).siblings('#cities').val();
         // let city = $(this).parent().attr('id');
+        saveSearchedCities();
         getEventByCity(city)
-        
-        console.log(city)
-        getSearchedCities()
         
     })
 
     autoCities();
     getAdvice();
+    getSearchedCities()
+    
    
 })
 
@@ -85,10 +85,30 @@ function deleteAppends() {
    
   }
 
-  function getSearchedCities() {
+  function saveSearchedCities() {
     const cities = JSON.parse(localStorage.getItem('cities')) || [];
     if (!cities.includes($('#cities').val())) {
-        cities.push($('#cities').val())
+        cities.unshift($('#cities').val())
     }
     localStorage.setItem('cities', JSON.stringify(cities))
+    }
+
+    function getSearchedCities() {
+        const cities = JSON.parse(localStorage.getItem('cities')) || [];
+        console.log(cities);
+
+        let length = cities.length
+        if (length < 4){
+           for (let i = 0; i < length; i++) {
+            $('#searchedCities').append('<li>' + cities[i] + '</li>')
+        } 
+    }
+        
+        else {
+            for (let i = 0; i < 4; i++) {
+            $('#searchedCities').append('<li>' + cities[i] + '</li>')
+
+        } 
+        }
+        
     }
