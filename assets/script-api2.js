@@ -10,12 +10,12 @@ function getEventByCity(city) {
         })
         .then(function (data) {
             console.log(data);
-
-            for (let i = 0; i < 4; i++) {
-                
-                appendEvents(i, i)
-                
-            }
+if (data.page.totalElements != '0') {
+    for (let i = 0; i < 4; i++) {
+        appendEvents(i, i)
+    }
+}
+            
 
             function appendEvents(num, index) {
                 $('#attraction-' + num).append('<h2 class= "has-text-centered has-text-warning has-text-weight-bold" >' + data._embedded.events[index].name + '</h2>');
