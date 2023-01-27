@@ -10,11 +10,13 @@ function getEventByCity(city) {
         })
         .then(function (data) {
             console.log(data);
-if (data.page.totalElements != '0') {
-    for (let i = 0; i < 4; i++) {
-        appendEvents(i, i)
-    }
-}
+            if (data.page.totalElements != '0' && ($('#cities').val() !== "")) {
+                for (let i = 0; i < 4; i++) {
+                    appendEvents(i, i);
+                    localStorage.setItem('CityCorrectName', JSON.stringify(data._embedded.events[0]._embedded.venues[0].city.name));
+                    saveSearchedCities()
+                }
+            }
             
 
             function appendEvents(num, index) {
@@ -66,7 +68,7 @@ $(document).ready(function () {
         const city = $('#cities').val();
         // let text = $(this).siblings('#cities').val();
         // let city = $(this).parent().attr('id');
-        saveSearchedCities();
+        
         getEventByCity(city);
         getSearchedCities()
         
@@ -88,17 +90,26 @@ function deleteAppends() {
   }
 
   function saveSearchedCities() {
-    const cities = JSON.parse(localStorage.getItem('cities')) || [];
-    console.log(cities.length);
-    if (cities.length >= 5) {
-        cities.pop()
-    }
-    if (!cities.includes($('#cities').val()) && ($('#cities').val() !== "") ) {
-        cities.unshift($('#cities').val())
+    const CityCorrectName = JSON.parse(localStorage.getItem('CityCorrectName'))
+    if (CityCorrectName && ($('#cities').val() !== "")) {
+        const cities = JSON.parse(localStorage.getItem('cities')) || [];
+        console.log(cities.length);
+        if (cities.length >= 5) {
+            cities.pop()
+        }
+        if (!cities.includes(CityCorrectName)) {
+            cities.unshift(CityCorrectName)
+        }
+        
+        localStorage.setItem('cities', JSON.stringify(cities))
+
+        
     }
     
-    localStorage.setItem('cities', JSON.stringify(cities))
     }
+
+
+
 
     function getSearchedCities() {
         const cities = JSON.parse(localStorage.getItem('cities')) || [];
