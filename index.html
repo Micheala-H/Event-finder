@@ -16,17 +16,14 @@
     <header>
         <h1 class="title is-size-1 has-text-info-dark has-text-centered is-family-sans-serif " >Event Finder</h1>
     </header>
-    <div class="column has-text-centered">
-        <h3>Search your city here</h3>
-        <div id="searchCity">
-            <label for="cities">City:</label>
-            <input type="text" id="cities">
+    <div class="column has-text-centered my-5 is-size-5">
+        <h3 class="my-5">Search your city here</h3>
+        <div id="searchCity" class="my-5">
+            <label for="cities"></label>
+            <input type="text" id="cities" class="ui-autocomplete-input" autocomplete="off">
             <button id="searchBtn">Search</button>
-            <p>Saved cities</p>
-            <div class="is-flex is-justify-content-space-around">
-                <ul id="searchedCities" class="list-items">
-                
-                </ul>
+            <div class="is-flex is-justify-content-space-around mt-5">
+                <ul id="searchedCities" class="list-items"><li>St. Paul</li><li>Waco</li><li>El Paso</li></ul>
             </div>
         </div>
     </div>
@@ -38,7 +35,7 @@
         
     </div>
     
-    <div id="advice" class="has-text-centered title is-size-5"></div>
+    <div id="advice" class="has-text-centered title is-size-5 my-6"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- <script src="./assets/script.js"></script> -->
