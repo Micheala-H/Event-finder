@@ -1,6 +1,49 @@
 const apiKey = 'qxKGGKTQOTy8d78ZxhPZOnTRwN2N2pFH'
 // const city = 'dallas'
 
+$(document).ready(function () {
+    $('#searchBtn').click( function(e){
+        e.preventDefault();
+        deleteAppends();
+        getAdvice();
+
+        if (($('#cities').val() == "")) {
+            getSearchedCities()
+        }
+        else {
+            const city = $('#cities').val();
+            // let text = $(this).siblings('#cities').val();
+            // let city = $(this).parent().attr('id');
+            // $('#attractions').style.display = 'block';
+            getEventByCity(city);
+            getSearchedCities()
+        }
+            
+
+        
+        
+        
+        
+    })
+
+    autoCities();
+    getAdvice();
+    getSearchedCities()
+    
+
+    $(document).on ('click', 'li', function(e) {
+        e.preventDefault();
+        deleteAppends();
+        const city = $(this).text();
+        getAdvice();
+        getEventByCity(city);
+        getSearchedCities()
+    })
+   
+})
+
+
+
 function getEventByCity(city) {
     const eventsUrl = 'https://app.ticketmaster.com/discovery/v2/events?city=' + city + '&apikey=' + apiKey
 
@@ -10,13 +53,17 @@ function getEventByCity(city) {
         })
         .then(function (data) {
             console.log(data);
-            if (data.page.totalElements != '0' && ($('#cities').val() !== "")) {
+            if (data.page.totalElements != '0'  )
+            
+             
+            {
                 for (let i = 0; i < 4; i++) {
                     appendEvents(i, i);
                     localStorage.setItem('CityCorrectName', JSON.stringify(data._embedded.events[0]._embedded.venues[0].city.name));
                     saveSearchedCities()
                 }
             }
+            
             
 
             function appendEvents(num, index) {
@@ -61,32 +108,15 @@ function getAdvice() {
         })
     }
 
-$(document).ready(function () {
-    $('#searchBtn').click( function(e){
-        e.preventDefault();
-        deleteAppends();
-        const city = $('#cities').val();
-        // let text = $(this).siblings('#cities').val();
-        // let city = $(this).parent().attr('id');
-        
-        getEventByCity(city);
-        getSearchedCities()
-        
-    })
 
-    autoCities();
-    getAdvice();
-    getSearchedCities()
-    
-   
-})
 
 function deleteAppends() {
     for (let num = 0; num < 4; num++) {
         $('#attraction-' + num).empty()
     };
     
-    $('#searchedCities').empty()
+    $('#searchedCities').empty();
+    $('#advice').empty()
   }
 
   function saveSearchedCities() {
