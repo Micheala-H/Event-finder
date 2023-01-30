@@ -5,6 +5,7 @@ $(document).ready(function () {
     $('#searchBtn').click( function(e){
         e.preventDefault();
         deleteAppends();
+        getAdvice();
         if (($('#cities').val() !== "")) {
             const city = $('#cities').val();
             // let text = $(this).siblings('#cities').val();
@@ -28,7 +29,7 @@ $(document).ready(function () {
         e.preventDefault();
         deleteAppends();
         const city = $(this).text();
-        
+        getAdvice();
         getEventByCity(city);
         getSearchedCities()
     })
@@ -108,7 +109,8 @@ function deleteAppends() {
         $('#attraction-' + num).empty()
     };
     
-    $('#searchedCities').empty()
+    $('#searchedCities').empty();
+    $('#advice').empty()
   }
 
   function saveSearchedCities() {
