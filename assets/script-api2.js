@@ -5,12 +5,17 @@ $(document).ready(function () {
     $('#searchBtn').click( function(e){
         e.preventDefault();
         deleteAppends();
-        const city = $('#cities').val();
-        // let text = $(this).siblings('#cities').val();
-        // let city = $(this).parent().attr('id');
-        
-        getEventByCity(city);
+        if (($('#cities').val() !== "")) {
+            const city = $('#cities').val();
+            // let text = $(this).siblings('#cities').val();
+            // let city = $(this).parent().attr('id');
+            
+            getEventByCity(city);
+            getSearchedCities()
+
+        }
         getSearchedCities()
+        
         
     })
 
@@ -30,6 +35,8 @@ $(document).ready(function () {
    
 })
 
+
+
 function getEventByCity(city) {
     const eventsUrl = 'https://app.ticketmaster.com/discovery/v2/events?city=' + city + '&apikey=' + apiKey
 
@@ -40,7 +47,7 @@ function getEventByCity(city) {
         .then(function (data) {
             console.log(data);
             if (data.page.totalElements != '0'  )
-            // && ($('#cities').val() !== "")
+            
              
             {
                 for (let i = 0; i < 4; i++) {
@@ -49,6 +56,7 @@ function getEventByCity(city) {
                     saveSearchedCities()
                 }
             }
+            
             
 
             function appendEvents(num, index) {
