@@ -6,16 +6,22 @@ $(document).ready(function () {
         e.preventDefault();
         deleteAppends();
         getAdvice();
-        if (($('#cities').val() !== "")) {
+
+        if (($('#cities').val() == "")) {
+            getSearchedCities()
+        }
+        else {
             const city = $('#cities').val();
             // let text = $(this).siblings('#cities').val();
             // let city = $(this).parent().attr('id');
-            
+            // $('#attractions').style.display = 'block';
             getEventByCity(city);
             getSearchedCities()
-
         }
-        getSearchedCities()
+            
+
+        
+        
         
         
     })
