@@ -31,6 +31,20 @@ li + li {
     max-width: 15%;
 }
 
+
+
+li {
+    font-style: italic;
+}
+
+#advice {
+    font-family: 'Arima Madurai', cursive;
+}
+
+
+
+
+
 body {
     min-height: 100vh;
     display: flex;
@@ -44,3 +58,4 @@ body {
 /* #attractions {
     display: none;
 } */
+
