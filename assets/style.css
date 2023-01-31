@@ -33,6 +33,7 @@ li + li {
 
 li {
     font-style: italic;
+    cursor: pointer
 }
 
 #advice {
