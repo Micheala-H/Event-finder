@@ -1,13 +1,14 @@
 const apiKey = 'qxKGGKTQOTy8d78ZxhPZOnTRwN2N2pFH'
 
 $(document).ready(function () {
+    $(attractions).hide();
     $('#searchBtn').click( function(e){
         e.preventDefault();
         deleteAppends();
         getAdvice();
 
         if (($('#cities').val() == "")) {
-            getSearchedCities()
+            getSearchedCities();
         }
         else {
             const city = $('#cities').val();
@@ -60,11 +61,16 @@ function getEventByCity(city) {
             console.log(data);
             if (data.page.totalElements != '0')
             {
+                $(attractions).show();
                 for (let i = 0; i < 4; i++) {
                     appendEvents(i, i);
                     localStorage.setItem('CityCorrectName', JSON.stringify(data._embedded.events[0]._embedded.venues[0].city.name));
                     saveSearchedCities()
                 }
+            }
+            
+            else {
+                $(attractions).hide();
             }
             
             function appendEvents(num, index) {
@@ -75,6 +81,7 @@ function getEventByCity(city) {
                 $('#attraction-' + num).append('<p class= "is-size-5">' + 'Where? ' + data._embedded.events[index]._embedded.venues[0].name + '</p>');
                 $('#attraction-' + num).append('<a href="' + data._embedded.events[index].url + '" class= "has-text-weight-bold has-text-danger-dark is-size-4">Buy Tickets</a>')
             } 
+            
         })
 }
 
