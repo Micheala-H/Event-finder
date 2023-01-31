@@ -34,3 +34,15 @@ li + li {
 /* #attractions {
     display: none;
 } */
+
+li {
+    font-style: italic;
+}
+
+#advice {
+    font-family: 'Arima Madurai', cursive;
+}
+
+
+
+
