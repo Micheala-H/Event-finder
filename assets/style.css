@@ -29,7 +29,6 @@ li + li {
     max-width: 15%;
 }
 
-
 li {
     font-style: italic;
     cursor: pointer
@@ -53,6 +52,7 @@ body {
     flex: 1;
 }
 
+/* Changes searched cities list to block if screen is smaller than 535px */
 @media (max-width: 535px) {
     .list-items {
       display: block;
