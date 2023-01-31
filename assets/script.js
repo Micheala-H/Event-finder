@@ -53,7 +53,6 @@ function getAdvice() {
         })
         // Appending new advice to advice div created in HTML
         .then(function (data) {
-            console.log(data);
             $('#advice').append('<h2>' + data.slip.advice + '</h2>');
         })
 }
@@ -102,7 +101,6 @@ function saveSearchedCities() {
     const CityCorrectName = JSON.parse(localStorage.getItem('CityCorrectName'))
     if (CityCorrectName) {
         const cities = JSON.parse(localStorage.getItem('cities')) || [];
-        console.log(cities.length);
         // Limits number of saved cities in local storage to 4 by removing the last city if more are added
         if (cities.length >= 5) {
             cities.pop()
