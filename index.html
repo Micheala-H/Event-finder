@@ -1,55 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/style.css">
-    <title>Event Finder</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz@8..60&display=swap" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./assets/style.css">
+        <!-- Title of page tab -->
+        <title>Event Finder</title>
+        <!-- Link to google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@900&display=swap" rel="stylesheet">
+        <!-- Link to google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz@8..60&display=swap" rel="stylesheet">
+        <!-- Link to Bulma -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    </head>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-</head>
-<body>
-<div id="wrapper">
-    <header>
-        <h1 class="title is-size-1 has-text-info-dark has-text-centered is-family-sans-serif has-background-primary-light py-5" >Event Finder</h1>
-    </header>
-    <div class="column has-text-centered my-5 is-size-5">
-        <h3 class="my-5">Search your city here</h3>
-        <div id="searchCity" class="my-5">
-            <label for="cities"></label>
-            <input type="text" id="cities" class="ui-autocomplete-input input is-default" placeholder="i.e. Saint Paul" autocomplete="off">
-            <button id="searchBtn" class="button is-default is-link">Search</button>
-            <div class="is-flex is-justify-content-space-around mt-5">
-                <ul id="searchedCities" class="list-items">
-                   
-                </ul>
+    <body>
+        <div id="wrapper">
+            <header>
+                <h1 class="title is-size-1 has-text-info-dark has-text-centered is-family-sans-serif has-background-primary-light py-5" >Event Finder</h1>
+            </header>
+            <div class="column has-text-centered my-5 is-size-5">
+                <h3 class="my-5">Search your city here</h3>
+                <div id="searchCity" class="my-5">
+                    <label for="cities"></label>
+                    <input type="text" id="cities" class="ui-autocomplete-input input is-default" placeholder="i.e. Saint Paul" autocomplete="off">
+                    <button id="searchBtn" class="button is-default is-link">Search</button>
+                    <div class="is-flex is-justify-content-space-around mt-5">
+                        <!-- Searched cities will be appended here via JS-->
+                        <ul id="searchedCities" class="list-items"></ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Events info provided by Ticketmaster API will be appended here via JS, one in each column -->
+            <div id="attractions" class="columns has-text-centered">
+                <div class="column card m-1 mt-3 has-text-white has-background-grey-darker ml-4" id="attraction-0"></div>
+                <div class="column m-1 card mt-3 has-text-white has-background-grey-darker" id="attraction-1"></div>
+                <div class="column m-1 card mt-3 has-text-white has-background-grey-darker" id="attraction-2"></div>
+                <div class="column m-1 card mt-3 has-text-white has-background-grey-darker mr-4" id="attraction-3"></div>  
             </div>
         </div>
-    </div>
-    <div id="attractions" class="columns has-text-centered">
-        <div class="column card m-1 mt-3 has-text-white has-background-grey-darker ml-4" id="attraction-0"></div>
-        <div class="column m-1 card mt-3 has-text-white has-background-grey-darker" id="attraction-1"></div>
-        <div class="column m-1 card mt-3 has-text-white has-background-grey-darker" id="attraction-2"></div>
-        <div class="column m-1 card mt-3 has-text-white has-background-grey-darker mr-4" id="attraction-3"></div>
-        
-    </div>
-</div>
-    <footer id="advice" class="has-text-white has-text-centered title is-size-5 has-background-primary-dark py-5 mt-6"></footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
-    crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="./assets/script.js"></script>
-</body>
+        <!-- Advice provided by Advice Slip API will be appended here via JS -->
+        <footer id="advice" class="has-text-white has-text-centered title is-size-5 has-background-primary-dark py-5 mt-6"></footer>
+
+        <!-- Link to Day.js -->
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+        crossorigin="anonymous"></script>
+        <!-- Link to jQuery v3.2.1 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Link to jQuery v3.6.0 -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <!-- Link to jQuery UI v1.13.2 -->
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <!-- Link to JavaScript file -->
+        <script src="./assets/script.js"></script>
+    </body>
 </html>
