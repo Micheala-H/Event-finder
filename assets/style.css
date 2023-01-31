@@ -1,6 +1,7 @@
 img {
     height: 300px;
-    width: 300px
+    width: 300px;
+
 }
 
 .ui-autocomplete {
@@ -20,4 +21,8 @@ img {
 
 li + li {
     margin-left: 10px;
+}
+
+.ui-helper-hidden-accessible{
+    display:none !important;
 }
