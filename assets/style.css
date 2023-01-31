@@ -26,6 +26,10 @@ li + li {
     display:none !important
 }
 
+#cities{
+    max-width: 15%;
+}
+
 /* #attractions {
     display: none;
 } */
