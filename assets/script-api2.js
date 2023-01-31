@@ -67,7 +67,7 @@ function getEventByCity(city) {
             
 
             function appendEvents(num, index) {
-                $('#attraction-' + num).append('<h2 class= "has-text-centered has-text-warning has-text-weight-bold" >' + data._embedded.events[index].name + '</h2>');
+                $('#attraction-' + num).append('<h2 class= "has-text-centered is-size-4 has-text-warning has-text-weight-bold" >' + data._embedded.events[index].name + '</h2>');
                 $('#attraction-' + num).append("<img src='"+ data._embedded.events[index].images[0].url + "' ></img>")
                 $('#attraction-' + num).append('<p class= "is-size-5 has-text-weight-bold">' + 'When? ' + dayjs(data._embedded.events[index].dates.start.dateTime).format('MMM-DD-YYYY') + '</p>');
                 $('#attraction-' + num).append('<p class= "is-size-5">' + 'What time? ' + dayjs(data._embedded.events[index].dates.start.dateTime).format('h:mm A') + '</p>');
