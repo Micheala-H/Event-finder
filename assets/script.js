@@ -1,6 +1,5 @@
 const apiKey = 'qxKGGKTQOTy8d78ZxhPZOnTRwN2N2pFH'
 
-
 $(document).ready(function () {
     $('#searchBtn').click( function(e){
         e.preventDefault();
@@ -12,9 +11,6 @@ $(document).ready(function () {
         }
         else {
             const city = $('#cities').val();
-            // let text = $(this).siblings('#cities').val();
-            // let city = $(this).parent().attr('id');
-            // $('#attractions').style.display = 'block';
             getEventByCity(city);
             getSearchedCities()
         }      
