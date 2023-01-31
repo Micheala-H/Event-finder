@@ -30,7 +30,6 @@ li + li {
 }
 
 
-
 li {
     font-style: italic;
     cursor: pointer
@@ -40,9 +39,9 @@ li {
     font-family: 'Arima Madurai', cursive;
 }
 
-
-
-
+#attractions {
+    font-family: 'Source Serif 4', serif;
+}
 
 body {
     min-height: 100vh;
