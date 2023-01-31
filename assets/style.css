@@ -14,13 +14,11 @@ img {
 }
 
 .list-items {
-    display: inline-flex;
-    justify-content: space-between;
-    
+    display: inline-flex;    
 }
 
 li + li {
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 .ui-helper-hidden-accessible {
@@ -32,18 +30,18 @@ li + li {
 }
 
 
-
 li {
     font-style: italic;
+    cursor: pointer
 }
 
 #advice {
     font-family: 'Arima Madurai', cursive;
 }
 
-
-
-
+#attractions {
+    font-family: 'Source Serif 4', serif;
+}
 
 body {
     min-height: 100vh;
@@ -55,7 +53,9 @@ body {
     flex: 1;
 }
 
-/* #attractions {
-    display: none;
-} */
+@media (max-width: 535px) {
+    .list-items {
+      display: block;
+    }
+  }
 
