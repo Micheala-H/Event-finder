@@ -14,13 +14,11 @@ img {
 }
 
 .list-items {
-    display: inline-flex;
-    justify-content: space-between;
-    
+    display: inline-flex;    
 }
 
 li + li {
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 .ui-helper-hidden-accessible {
@@ -55,5 +53,9 @@ body {
     flex: 1;
 }
 
-
+@media (max-width: 535px) {
+    .list-items {
+      display: block;
+    }
+  }
 

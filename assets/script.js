@@ -8,6 +8,7 @@ $(document).ready(function () {
         getAdvice();
 
         if (($('#cities').val() == "")) {
+            $(attractions).hide();
             getSearchedCities();
         }
         else {
@@ -73,6 +74,7 @@ function getEventByCity(city) {
                 $(attractions).hide();
             }
             
+            
             function appendEvents(num, index) {
                 $('#attraction-' + num).append('<h2 class= "is-size-4 has-text-warning " >' + data._embedded.events[index].name + '</h2>');
                 $('#attraction-' + num).append("<img src='"+ data._embedded.events[index].images[0].url + "' ></img>")
@@ -87,7 +89,7 @@ function getEventByCity(city) {
 
 function saveSearchedCities() {
     const CityCorrectName = JSON.parse(localStorage.getItem('CityCorrectName'))
-    if (CityCorrectName && ($('#cities').val() !== "")) {
+    if (CityCorrectName) {
         const cities = JSON.parse(localStorage.getItem('cities')) || [];
         console.log(cities.length);
         if (cities.length >= 5) {
