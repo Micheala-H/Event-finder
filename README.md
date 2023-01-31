@@ -13,11 +13,11 @@ There is no installion process.
 
 In the search bar, type in a city and/or choose the city from the dropdown and press search.
 
-![screenshot drop down](./assets/images/Screenshot_20230130_092354.png)
+<kbd>![screenshot drop down](./assets/images/Screenshot_20230130_092354.png)</kbd>
 
 Then, choose an event from the 4 posted resulted and click buy tickets.
 
-![screenshot results](./assets/images/Screenshot_20230130_092128.png)
+<kbd>![screenshot results](./assets/images/Screenshot_20230130_092128.png)</kbd>
 
 At the bottom of the page, along your travels take some life advice on your journey.
 
