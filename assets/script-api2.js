@@ -1,6 +1,49 @@
 const apiKey = 'qxKGGKTQOTy8d78ZxhPZOnTRwN2N2pFH'
 // const city = 'dallas'
 
+$(document).ready(function () {
+    $('#searchBtn').click( function(e){
+        e.preventDefault();
+        deleteAppends();
+        getAdvice();
+
+        if (($('#cities').val() == "")) {
+            getSearchedCities()
+        }
+        else {
+            const city = $('#cities').val();
+            // let text = $(this).siblings('#cities').val();
+            // let city = $(this).parent().attr('id');
+            // $('#attractions').style.display = 'block';
+            getEventByCity(city);
+            getSearchedCities()
+        }
+            
+
+        
+        
+        
+        
+    })
+
+    autoCities();
+    getAdvice();
+    getSearchedCities()
+    
+
+    $(document).on ('click', 'li', function(e) {
+        e.preventDefault();
+        deleteAppends();
+        const city = $(this).text();
+        getAdvice();
+        getEventByCity(city);
+        getSearchedCities()
+    })
+   
+})
+
+
+
 function getEventByCity(city) {
     const eventsUrl = 'https://app.ticketmaster.com/discovery/v2/events?city=' + city + '&apikey=' + apiKey
 
@@ -10,18 +53,24 @@ function getEventByCity(city) {
         })
         .then(function (data) {
             console.log(data);
-
-            for (let i = 0; i < 4; i++) {
-                
-                appendEvents(i, i)
-                
+            if (data.page.totalElements != '0'  )
+            
+             
+            {
+                for (let i = 0; i < 4; i++) {
+                    appendEvents(i, i);
+                    localStorage.setItem('CityCorrectName', JSON.stringify(data._embedded.events[0]._embedded.venues[0].city.name));
+                    saveSearchedCities()
+                }
             }
+            
+            
 
             function appendEvents(num, index) {
                 $('#attraction-' + num).append('<h2 class= "has-text-centered is-size-4 has-text-warning has-text-weight-bold" >' + data._embedded.events[index].name + '</h2>');
                 $('#attraction-' + num).append("<img src='"+ data._embedded.events[index].images[0].url + "' ></img>")
-                $('#attraction-' + num).append('<p class= "is-size-5 has-text-weight-bold">' + 'When? ' + data._embedded.events[index].dates.start.localDate + '</p>');
-                $('#attraction-' + num).append('<p class= "is-size-5">' + 'What time? ' + data._embedded.events[index].dates.start.localTime + '</p>');
+                $('#attraction-' + num).append('<p class= "is-size-5 has-text-weight-bold">' + 'When? ' + dayjs(data._embedded.events[index].dates.start.dateTime).format('MMM-DD-YYYY') + '</p>');
+                $('#attraction-' + num).append('<p class= "is-size-5">' + 'What time? ' + dayjs(data._embedded.events[index].dates.start.dateTime).format('h:mm A') + '</p>');
                 $('#attraction-' + num).append('<p class= "is-size-5">' + 'Where? ' + data._embedded.events[index]._embedded.venues[0].name + '</p>');
                 $('#attraction-' + num).append('<a href="' + data._embedded.events[index].url + '" class= " has-text-danger-dark is-size-4">Buy Tickets</a>')
             }
@@ -59,27 +108,43 @@ function getAdvice() {
         })
     }
 
-$(document).ready(function () {
-    $('#searchBtn').click( function(e){
-        e.preventDefault();
-        deleteAppends()
-        const city = $('#cities').val()
-        // let text = $(this).siblings('#cities').val();
-        // let city = $(this).parent().attr('id');
-        getEventByCity(city)
-        
-        console.log(city)
 
-        localStorage.setItem('searchedCities', city)
-    })
-
-    autoCities();
-    getAdvice()
-})
 
 function deleteAppends() {
     for (let num = 0; num < 4; num++) {
         $('#attraction-' + num).empty()
-    }
-   
+    };
+    
+    $('#searchedCities').empty();
+    $('#advice').empty()
   }
+
+  function saveSearchedCities() {
+    const CityCorrectName = JSON.parse(localStorage.getItem('CityCorrectName'))
+    if (CityCorrectName && ($('#cities').val() !== "")) {
+        const cities = JSON.parse(localStorage.getItem('cities')) || [];
+        console.log(cities.length);
+        if (cities.length >= 5) {
+            cities.pop()
+        }
+        if (!cities.includes(CityCorrectName)) {
+            cities.unshift(CityCorrectName)
+        }
+        
+        localStorage.setItem('cities', JSON.stringify(cities))
+
+        
+    }
+    
+    }
+
+
+
+
+    function getSearchedCities() {
+        const cities = JSON.parse(localStorage.getItem('cities')) || [];
+
+        for (let i = 0; i < cities.length; i++) {
+            $('#searchedCities').append('<li>' + cities[i] + '</li>') 
+        }    
+    }
