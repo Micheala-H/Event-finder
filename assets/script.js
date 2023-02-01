@@ -90,7 +90,7 @@ function getEventByCity(city) {
                 $('#attraction-' + num).append('<p class= "is-size-5 ">' + 'When? ' + dayjs(data._embedded.events[index].dates.start.dateTime).format('MMM-DD-YYYY') + '</p>');
                 $('#attraction-' + num).append('<p class= "is-size-5">' + 'What time? ' + dayjs(data._embedded.events[index].dates.start.dateTime).format('h:mm A') + '</p>');
                 $('#attraction-' + num).append('<p class= "is-size-5">' + 'Where? ' + data._embedded.events[index]._embedded.venues[0].name + '</p>');
-                $('#attraction-' + num).append('<a href="' + data._embedded.events[index].url + '" class= "has-text-weight-bold has-text-danger-dark is-size-4">Buy Tickets</a>')
+                $('#attraction-' + num).append('<a target="_blank" href="' + data._embedded.events[index].url + '" class= "has-text-weight-bold has-text-danger-dark is-size-4">Buy Tickets</a>')
             }   
         })
 }
